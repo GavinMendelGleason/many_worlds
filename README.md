@@ -80,15 +80,86 @@ usually think of *our own* world. That is, we generally think of there
 being a single time-line, and everything that happens is shared for
 all participants. As those with a bit of experience with quantum
 mechanics may know, this may very well *not* be true! However it is
-*mostly* true at human scales.
+*mostly* true at human scales. And it is certainly convenient to think
+in this fashion as it is simpler.
 
-## The Simulation
+## Locality in the Simulation
 
 But when we try to simulate our understanding of the state of the
-world we inevitably 
+world we inevitably find that we can't be everywhere at once. Locality
+is a factor of the real world which is inescapable. At a physical
+level this is because the speed of light provides an upper limit to
+our communication times.
+
+This *locality* manifests itself in different ways in different
+systems for slightly different reasons. So let us take a look at what
+causes this locality.
+
+### Code
+
+The way that we program with computer code is *step* orientated. In
+compiled languages, we have to make a syntactically complete update, a
+commit as it were, run the compiler and get an output. In dynamic
+languages like javascript and python we generally update the state of
+the program code and re-run the code after a similarly syntactically
+complete change. Even in the now relatively rare *image* based
+programming models which were used in Lisp and SmallTalk for instance,
+updates would happen to a chunk simultaneously - perhaps a function,
+class definition or a procedure.
+
+The naturality of this chunk-at-a-time transition is why gits commits
+are themselves natural for revision control. It also means however
+that it is convenient for our changes to be done in a *local* version
+which we edit in a single chunk, and only later attempt to reconsile
+with changes which might be made by others.
+
+It is *possible* to have simultaneous editing of code by multiple
+participants using other ideas such as CRDTs or OTs which we will look
+at in a bit, they simply aren't that *useful* since we don't know when
+the code is ready to compile because the commit granularity of
+characters is too fine to make sense.
+
+Here it is useful to think of these commits as worlds. What is true at
+a world is a state of a set of files. What we can query is the lines
+in these files. We call these worlds things like: `77a407c` or perhaps
+we give them names like `origin/main`. They are also distinctly not
+linear.
 
 ```
+             main
+⋆ → ⋆ → ⋆ → ⋆
+     ↘
+       ⋆ →  ⋆
+           dev
+
 ```
+
+This non-linearity leads us to branching worlds. And here is where git
+gets interesting. We can *reconcile* histories by creating new shared
+understandings through the process of rebases and merges.
+
+Each state transition from one commit to another can be described as
+some number of text line deletions and some number of line
+additions. If these regions are non-overlapping we can perform a
+*three-way-merge*.
+
+This new commit essentially makes the diagram *commute*. We can think
+of the new merge commit as arising from either of the two branches, as
+a patch, both arriving at precisely the same final state.
+
+```
+
+                main
+⋆ → ⋆ → ⋆ → ⋆ →  ⋆
+     ↘        ↗  ⇑
+       ⋆ →  ⋆    merge commit
+        dev
+```
+
+### Eventual Consistency
+
+The locality of operations is a fundamental fact of 
+
 
 Even the way we think of [eventual consistency]()
 
