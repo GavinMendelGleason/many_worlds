@@ -433,10 +433,11 @@ And these technologies are amazing, useful and the *illusion* of
 locality is fantastic when it can be made to work. Tricks like CRDTs
 and OT are super-cool.
 
-But we're also missing multiple worlds if we don't pull back the
-curtains a bit and expose some more of the guts. The beauty of gits
-model was in keeping all of our worlds so we can see the state
-transitions. This model enabled a host of really amazing things only
-one of which is versioning. It's real power came in enabling
-collaboration by exposing the multiple worlds, their states and their
-transitions so that we could work with more directly with locality.
+But we're also missing multiple worlds of possibilities if we don't
+pull back the curtains a bit and expose some more of the guts. The
+beauty of git's model was in keeping all of our worlds visibile. We
+can travel to the worlds, we can see the state transitions. This model
+enabled a host of really amazing things only one of which is
+versioning. It's real power came in enabling collaboration by exposing
+the multiple worlds, their states and their transitions so that we
+could work with more directly with locality.
