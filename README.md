@@ -440,4 +440,4 @@ can travel to the worlds, we can see the state transitions. This model
 enabled a host of really amazing things only one of which is
 versioning. It's real power came in enabling collaboration by exposing
 the multiple worlds, their states and their transitions so that we
-could work with more directly with locality.
+could work more directly with locality.
