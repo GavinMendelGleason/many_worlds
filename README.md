@@ -155,11 +155,15 @@ edit in a single chunk, and only later attempt to reconcile with
 changes which might be made by others.
 
 It is *possible* to have simultaneous editing of code by multiple
-participants using other ideas such as CRDTs or OTs which we will look
-at in a bit (these also deal with the problems of locality by the
-way), they simply aren't that *useful* since we don't know when the
-code is ready to compile because the commit granularity of characters
-is too fine to make sense.
+participants using other ideas such as
+[CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+(Conflict Free Replicated Data Type) or
+[OTs](https://en.wikipedia.org/wiki/Operational_transformation)
+(Operational Transformations) which we will look at in a bit (these also
+deal with the problems of locality by the way), they simply aren't
+that *useful* since we don't know when the code is ready to compile
+because the commit granularity of characters is too fine to make
+sense.
 
 Here it is useful to think of these commits as worlds. What is true at
 a world is a state of a set of files. What we can query is the lines
@@ -289,8 +293,8 @@ joe:
 ```
 
 Google sends on the updates to the clients allowing client updates to
-be *fixed* by transforming them. Hence the name OT (Operational
-Transform). We can get a linear world by taking google's view as
+be *fixed* by transforming them. Hence the name OT: Operational
+Transformation. We can get a linear world by taking google's view as
 canonical, with the order of messages recieved. But each client can
 update their view independently after recieving the updates such that
 they are appropriately transformed.
@@ -300,7 +304,7 @@ time by reordering transaction updates such that we don't have to
 agree them all in advance, which would make our application feel very
 laggy and it would not have the illusion of being a shared resource at all!
 
-Another way to achieve this same effect is with a CRDT. A CRDT builds
+Another way to achieve this same effect is with a CRDT. A CRDT[^crdt] builds
 operations which *commute in the first place*. That is, it doesn't
 matter the order of the operations, when they are applied they arrive
 at the same final state. Of course this commutivity places a lot of
@@ -308,6 +312,8 @@ restrictions on *what* types of operations we can do. We certainly
 can't have commuting bank transactions where you pay for your laté
 from your empty bank account and then get paid. But it can do a lot,
 and if you can make your `σ`'s commute then life is really great.
+
+[^crdt]: CmRDT are based on commuting operations, but CvRDT use a commutative, associative and idemponent *merge* on states.
 
 ## What Pieces are Missing
 
