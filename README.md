@@ -105,7 +105,7 @@ w' ⊢ parent(sarah,Y) ← {[Y = jim], [Y = kate]}
 ```
 
 Different worlds have different facts. And we move from one world to
-the next through an arrow (which we could call an accessbility
+the next through an arrow (which we could call an accessibility
 relation). The arrow is *transitive*, in the sense that we can follow
 the arrow through any number of hops.
 
@@ -226,7 +226,7 @@ having some sort of communication which would resolve issues with
 transactions.
 
 However, more elaborate approaches which involve coming to
-[concensus](https://en.wikipedia.org/wiki/Consensus_(computer_science))
+[consensus](https://en.wikipedia.org/wiki/Consensus_(computer_science))
 also exist. These make the timeline *seem* linear to the
 participants. But the secret underlying sauce in these algorithms is
 that the timeline is *not* linear: We are actually dealing with
@@ -295,8 +295,8 @@ joe:
 Google sends on the updates to the clients allowing client updates to
 be *fixed* by transforming them. Hence the name OT: Operational
 Transformation. We can get a linear world by taking google's view as
-canonical, with the order of messages recieved. But each client can
-update their view independently after recieving the updates such that
+canonical, with the order of messages received. But each client can
+update their view independently after receiving the updates such that
 they are appropriately transformed.
 
 Again, we are finding a way to agree on our final world state - this
@@ -309,7 +309,7 @@ operations which *commute in the first place*. That is, it doesn't
 matter the order of the operations, when they are applied they arrive
 at the same final state. Of course this commutivity places a lot of
 restrictions on *what* types of operations we can do. We certainly
-can't have commuting bank transactions where you pay for your laté
+can't have commuting bank transactions where you pay for your latte
 from your empty bank account and then get paid. But it can do a lot,
 and if you can make your `σ`'s commute then life is really great.
 
