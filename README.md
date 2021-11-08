@@ -29,7 +29,7 @@ should go to git.  *Git* really stands out as a tool for data
 collaboration on one of the most complex types of data we have:
 Code. And the way we do this collaboration is very different from the
 way we collaborate with one of the other extremely widespread data
-collabration tools: the database.
+collaboration tools: the database.
 
 Now there are various kinds of databases, various replication
 technologies, some very sophisticated and various levels of
@@ -50,10 +50,10 @@ the I in ACID, stems from the notion that databases should have *one*
 current state of the world. Our transactions exist to construct
 *movement* in this one world. Isolation allows us to ignore how others
 are changing the world and focus on our own problems. Since nobody
-likes having to deal with others problems, this is good news.
+likes having to deal with others' problems, this is good news.
 
 It is really convenient when transactional commits happen with reads
-and writes that are scheduled relatively close to eachother and where
+and writes that are scheduled relatively close to each other and where
 scaling vertically is not an issue. It works so well that databases
 working on this model are absolutely pervasive in our computer
 architectures.
@@ -79,8 +79,8 @@ We can read this as a query at the world `w`, which gives us back all
 substitutions of variables which would make the query true at world
 `w`.
 
-Here we have a world at which Jane and Joe are Jim's parents, and Tim
-and Elena are Kate's parent. That's sensible enough, but we may need
+Here we have a world in which Jane and Joe are Jim's parents, and Tim
+and Elena are Kate's parents. That's sensible enough, but we may need
 to update this world when Jim and Kate have children.
 
 This requires a *state transition*. We will go from a world `w` to `w'`
@@ -207,7 +207,7 @@ This ability to get a shared world from divergent ones is what forms
 the backbone of git's success in acting as a *collaboration* tool. We
 collaborate on code by finding acceptable shared worlds after having
 made state transitions whose granularities reflect the cadence of
-programm writing.
+program writing.
 
 ### Replication
 
@@ -233,7 +233,7 @@ that the timeline is *not* linear: We are actually dealing with
 multiple worlds.
 
 Our task is to make sure that some agent processes can up with a way
-to arive at a shared final state which all participants agree
+to arrive at a shared final state which all participants agree
 with. That is, the same final world state.
 
 ```
@@ -243,14 +243,14 @@ with. That is, the same final world state.
                w₁ → wₑ
 ```
 
-There are also very clever ways of relaxing how our worlds come to
+There are also very clever ways of relaxing how our worlds come to a
 shared agreement. Instead of having to reduce immediately to `w₂`, we
 can decide that our algorithm only needs to *eventually* get us
 there. Intermediate reads, in different localities, will not get the
 same world!
 
 Sometimes this is good enough, and sometimes good enough is better
-because its faster. If you have a monotonically increasing counter for
+because it's faster. If you have a monotonically increasing counter for
 instance, you don't care if you add one now, or add one later. The sum
 at the end will the same. People missing a bunch of up-votes when they
 check their social media will not cause serious concern. They'll see
@@ -277,7 +277,7 @@ It is not a shared resource at all. Instead what we are doing is
 creating replicas with a transaction processing system which can
 *re-order* transactions.
 
-When I edit a document I create some number of edit operations. These
+When I edit a document I create a number of edit operations. These
 edit operations are applied to my local copy of a document. I then
 send these to google's servers.
 
@@ -321,7 +321,7 @@ I hope that seeing things laid out in a general framework which
 unifies these very disparate ways of collaborating has inspired some
 new ideas. It certainly has got me thinking about what we *don't* have
 that we probably *should* have. What pieces are missing from the
-collaboration puzzle.
+collaboration puzzle?
 
 ### Structured Patches
 
@@ -368,13 +368,13 @@ which had the ability to travel through worlds, whole new avenues open
 up.
 
 One of these is a *modal logic* query languages. Kripke semantics was
-originally devised by Saul Kripke to create a semantics which could be
+originally devised by Saul Kripke to create semantics which could be
 used for modal logics. And one obvious modal logic which might be
 useful for databases is temporal logic.
 
 What did we know at state `w`? This could be very important for
 *auditing*. What decisions were made at some point in the past relies
-on what knowledge they had at that point. If you don't know what you
+on what knowledge they had at that point? If you don't know what you
 knew, you can't evaluate if you did the right thing at that time. Of
 course this would seem to be an almost no-brainer for regulatory
 requirements.
@@ -390,7 +390,7 @@ other very powerful such statements such as are found in
 
 Speaking in more practical engineering terms, we might ask for when a
 particular object was edited last, and by whom or what algorithm. Or
-when was the last time that a document refered to another document.
+when was the last time that a document referred to another document?
 
 ### Hypothetical worlds
 
@@ -407,7 +407,7 @@ In a computer however we can actually just try it out and see what
 happens. We can then proceed to throw away the world if we don't like
 it.
 
-This is already a routine phenonmena with github pull requests. github
+This is already a routine phenomena with github pull requests. github
 will merge our pull request into a hypothetical commit and at this
 commit we can resolve a number of propositions at the new world. These
 propositions might include linting, or unit tests or integration
@@ -435,9 +435,9 @@ and OT are super-cool.
 
 But we're also missing multiple worlds of possibilities if we don't
 pull back the curtains a bit and expose some more of the guts. The
-beauty of git's model was in keeping all of our worlds visibile. We
+beauty of git's model was in keeping all of our worlds visible. We
 can travel to the worlds, we can see the state transitions. This model
 enabled a host of really amazing things only one of which is
-versioning. It's real power came in enabling collaboration by exposing
+versioning. Its real power came in enabling collaboration by exposing
 the multiple worlds, their states and their transitions so that we
 could work more directly with locality.
